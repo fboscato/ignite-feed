@@ -3,6 +3,27 @@ import { Post } from './components/Post';
 import styles from './App.module.css';
 import { Sidebar } from './components/Sidebar';
 import './global.css';
+
+const posts = [
+  {
+    id:1,
+    author:{
+      avatarUrl: 'https://github.com/fboscato.png',
+      nome:'Fernando Boscato',
+      role: 'Web designer'
+    },
+    content:[
+      {type: 'paragraph', content:'Fala galeraa 👋' },
+      {type: 'paragraph', content: 'Acabei de subir mais um projeto no meu portifa. É um projeto que fiz no NLW Return, evento da Rocketseat. O nome do projeto é DoctorCare 🚀  '},
+      {type: 'link', content: '👉 jane.design/doctorcare '},
+       
+    ]
+  },
+
+]
+
+
+
 export function App() {
   return (
     <div>
