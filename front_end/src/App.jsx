@@ -17,9 +17,24 @@ const posts = [
       {type: 'paragraph', content: 'Acabei de subir mais um projeto no meu portifa. É um projeto que fiz no NLW Return, evento da Rocketseat. O nome do projeto é DoctorCare 🚀  '},
       {type: 'link', content: '👉 jane.design/doctorcare '},
        
-    ]
+    ],
+    publishedAt: new Date('2023-03-29 17:00:00'),
   },
-
+  {
+    id:2,
+    author:{
+      avatarUrl: 'https://github.com/maykbrito.png',
+      nome:'Mayk Brito',
+      role: 'Educator @Rocketseat'
+    },
+    content:[
+      {type: 'paragraph', content:'Fala galeraa 👋' },
+      {type: 'paragraph', content: 'Acabei de subir mais um projeto no meu portifa. É um projeto que fiz no NLW Return, evento da Rocketseat. O nome do projeto é DoctorCare 🚀  '},
+      {type: 'link', content: '👉 jane.design/doctorcare '},
+       
+    ],
+    publishedAt: new Date('2023-03-30 17:00:00'),
+  },
 ]
 
 
@@ -31,12 +46,16 @@ export function App() {
       <div className={styles.wrapper}>
         <Sidebar />
         <main>
+        {posts.map(posts =>{
+          return (
           <Post
-            author='Fernando Boscato'
-            content='Lorem ipsum dolor sit amet consectetur adipisicing elit. Molestiae, sunt! Nesciunt officiis possimus nihil ea voluptatibus a corrupti! Necessitatibus nostrum fugit repellat nobis doloribus, similique deleniti mollitia? Error, deserunt dolor!'
+            author={posts.author}
+            content={posts.content}
+            publishedAt={posts.publishedAt}
           />
-          <Post author='Diego Fernandes' content='Novo Post' />
-          <Post />
+          )
+        })}
+          
         </main>
       </div>
     </div>
