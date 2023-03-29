@@ -4,12 +4,12 @@ import styles from './App.module.css';
 import { Sidebar } from './components/Sidebar';
 import './global.css';
 
-const posts = [
+const post = [
   {
     id:1,
     author:{
       avatarUrl: 'https://github.com/fboscato.png',
-      nome:'Fernando Boscato',
+      name:'Fernando Boscato',
       role: 'Web designer'
     },
     content:[
@@ -24,7 +24,7 @@ const posts = [
     id:2,
     author:{
       avatarUrl: 'https://github.com/maykbrito.png',
-      nome:'Mayk Brito',
+      name:'Mayk Brito',
       role: 'Educator @Rocketseat'
     },
     content:[
@@ -46,12 +46,12 @@ export function App() {
       <div className={styles.wrapper}>
         <Sidebar />
         <main>
-        {posts.map(posts =>{
+        {post.map(post =>{
           return (
           <Post
-            author={posts.author}
-            content={posts.content}
-            publishedAt={posts.publishedAt}
+            author={post.author}
+            content={post.content}
+            publishedAt={post.publishedAt}
           />
           )
         })}

@@ -1,16 +1,18 @@
+import {format} from 'data-fns'
 import { Avatar } from './Avatar';
 import { Comment } from './Comment';
 import styles from './Post.module.css';
 
-export function Post() {
+export function Post({author,publishedAt}) {
+  const publishedDataFormatted = format()
   return (
     <article className={styles.post}>
       <header>
         <dir className={styles.author}>
-          <Avatar src='https://github.com/maykbrito.png' />
+          <Avatar src={author.avatarUrl} />
           <div className={styles.authorInfo}>
-            <strong>Fernando Boscato</strong>
-            <span>Web Developer</span>
+            <strong>{author.name}</strong>
+            <span>{author.role}</span>
           </div>
         </dir>
 
