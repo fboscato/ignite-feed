@@ -4,7 +4,7 @@ import { Comment } from './Comment';
 import styles from './Post.module.css';
 
 export function Post({author,publishedAt}) {
-  const publishedDataFormatted = format()
+  const publishedDataFormatted = format(publishedAt,'11 marco 2023 às 08:14')
   return (
     <article className={styles.post}>
       <header>
@@ -16,7 +16,7 @@ export function Post({author,publishedAt}) {
           </div>
         </dir>
 
-        <time title='11 marco 2023 às 08:14' dateTime='2023-03-02 08:14:30'>
+        <time title='' dateTime='2023-03-02 08:14:30'>
           Publicado a 1h
         </time>
       </header>
