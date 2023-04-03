@@ -4,11 +4,13 @@ import { useState } from "react";
 
 import { Avatar } from "./Avatar";
 import { Comment } from "./Comment";
+
 import styles from "./Post.module.css";
 
 export function Post({ author, publishedAt, content }) {
-  const [comments, setComments] = useState(["Post muito bacana hein!!!"]);
-  const [newCommentText, setNewCommentsText] = useState('');
+  const [comments, setComments] = useState(["Post muito bacana hein?!"]);
+
+  const [newCommentText, setNewCommentsText] = useState("");
 
   const publishedDataFormatted = format(
     publishedAt,
@@ -22,16 +24,24 @@ export function Post({ author, publishedAt, content }) {
     locale: ptBR,
     addSuffix: true,
   });
+
   function handleCreateNewComment() {
     event.preventDefault();
     const newCommentText = event.target.comment.value;
 
     setComments([...comments, newCommentText]);
-    setNewCommentsText('')
+    setNewCommentsText("");
   }
 
   function handleNewCommentChange() {
-    setNewCommentsText(event.target.value)
+    setNewCommentsText(event.target.value);
+  }
+
+  function deleteComment(commentToDelete) {
+    const commentsWithouDeleteOne = comments.filter(comment =>{
+      return comment !== commentToDelete
+    })
+   setComments(commentsWithouDeleteOne)
   }
 
   return (
@@ -55,10 +65,10 @@ export function Post({ author, publishedAt, content }) {
       <div className={styles.content}>
         {content.map((line) => {
           if (line.type === "paragraph") {
-            return <p>{line.content}</p>;
+            return <p key={line.content}>{line.content}</p>;
           } else if (line.type === "link") {
             return (
-              <p>
+              <p key={line.content}>
                 <a href="">{line.content}</a>
               </p>
             );
@@ -82,7 +92,13 @@ export function Post({ author, publishedAt, content }) {
 
       <div className={styles.commentList}>
         {comments.map((comment) => {
-          return <Comment comment={comment} />;
+          return (
+            <Comment
+              key={comment}
+              content={comment}
+              onDeleteComment={deleteComment}
+            />
+          );
         })}
       </div>
     </article>
