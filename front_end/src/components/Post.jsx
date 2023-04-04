@@ -34,14 +34,19 @@ export function Post({ author, publishedAt, content }) {
   }
 
   function handleNewCommentChange() {
+    event.target.setCustomValidity('')
     setNewCommentsText(event.target.value);
   }
 
+  function handleNewCommentInvalid() {
+    event.target.setCustomValidity('Esse campo é obrigatório!')
+  }
+
   function deleteComment(commentToDelete) {
-    const commentsWithouDeleteOne = comments.filter(comment =>{
-      return comment !== commentToDelete
-    })
-   setComments(commentsWithouDeleteOne)
+    const commentsWithouDeleteOne = comments.filter((comment) => {
+      return comment !== commentToDelete;
+    });
+    setComments(commentsWithouDeleteOne);
   }
 
   return (
@@ -83,10 +88,12 @@ export function Post({ author, publishedAt, content }) {
           placeholder="Deixe seu comentario"
           value={newCommentText}
           onChange={handleNewCommentChange}
+          onInvalid={handleNewCommentInvalid}
+          required
         />
 
         <footer>
-          <button type="submit">Comentar</button>
+          <button type="submit" disabled={newCommentText.length ===0}>Comentar</button>
         </footer>
       </form>
 
