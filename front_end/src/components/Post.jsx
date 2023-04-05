@@ -48,7 +48,7 @@ export function Post({ author, publishedAt, content }) {
     });
     setComments(commentsWithouDeleteOne);
   }
-
+const isNewConnebtEnpty = newCommentText.length ===0
   return (
     <article className={styles.post}>
       <header>
@@ -93,7 +93,7 @@ export function Post({ author, publishedAt, content }) {
         />
 
         <footer>
-          <button type="submit" disabled={newCommentText.length ===0}>Comentar</button>
+          <button type="submit" disabled={isNewConnebtEnpty}>Comentar</button>
         </footer>
       </form>
 
